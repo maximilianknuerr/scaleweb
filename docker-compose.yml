@@ -1,0 +1,23 @@
+---
+version: "3"
+services:
+  order:
+    build: .
+    command: bash -c "ruby order.rb -o '0.0.0.0'"
+    image: ruby:3
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 4567:4567
+    tty: true
+    stdin_open: true
+  payment:
+    build: .
+    command: bash -c "ruby payment.rb -o '0.0.0.0'"
+    image: ruby:3
+    volumes:
+      - .:/usr/src/app
+    tty: true
+    stdin_open: true
+  nats:
+    image: nats:alpine

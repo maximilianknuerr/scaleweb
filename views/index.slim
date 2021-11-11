@@ -1,0 +1,12 @@
+h1 Order
+
+h2 New Order
+form action="/order" method="post"
+  input type="text" name="amount"
+  input type="submit" value="New Order"
+
+
+h2 Orders
+ul
+  - @orders.each do |order|
+    li= "#{order.id} / #{order.state}"

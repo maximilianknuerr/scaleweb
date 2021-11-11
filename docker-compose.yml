@@ -21,3 +21,12 @@ services:
     stdin_open: true
   nats:
     image: nats:alpine
+  sender:
+    build: .
+    command: bash -c "ruby send.rb -o '0.0.0.0'"
+    image: ruby:3
+    volumes:
+      - .:/usr/src/app
+    tty: true
+    stdin_open: true
+ 
